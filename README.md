@@ -36,11 +36,11 @@ python manage.py runserver`
 
 8. Acesse a aplicação em http://localhost:8000/.
 Estrutura do projeto
-- A pasta chatbot contém o aplicativo Django responsável pela funcionalidade do chatbot.
-- A pasta exportar contém o aplicativo Django responsável pela funcionalidade de exportar a conversa em formato PDF.
-- A pasta core contém as configurações do projeto Django, como as configurações do banco de dados e as configurações do servidor.
-- A pasta templates contém os arquivos HTML que são renderizados pela aplicação.
-- O arquivo requirements.txt contém as dependências do projeto.
+  - A pasta chatbot contém o aplicativo Django responsável pela funcionalidade do chatbot.
+  - A pasta exportar contém o aplicativo Django responsável pela funcionalidade de exportar a conversa em formato PDF.
+  - A pasta core contém as configurações do projeto Django, como as configurações do banco de dados e as configurações do servidor.
+  - A pasta templates contém os arquivos HTML que são renderizados pela aplicação.
+  - O arquivo requirements.txt contém as dependências do projeto.
 
 ## Contribuindo
 Se você deseja contribuir para este projeto, sinta-se à vontade para abrir uma solicitação de pull ou uma issue no GitHub.
