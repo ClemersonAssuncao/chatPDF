@@ -1,6 +1,15 @@
 {% extends "base.html" %}
 
-	{% block content %}
-    teste
-	{% endblock %}
-
+{% block content %}
+<!-- <form class="container text-center" enctype="multipart/form-data">
+		<label for="file_pdf">Envie um arquivo</label><br>
+    	<input type="file" name="file_pdf" id="file_pdf" accept=".pdf">
+    </form> -->
+<div class="container text-center" enctype="multipart/form-data">
+	<form method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="Enviar arquivo">
+	</form>
+</div>
+{% endblock %}
