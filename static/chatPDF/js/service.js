@@ -7,7 +7,7 @@ Server.prototype = {
     async sendMessage(text) {
         var parameter = new FormData();
         parameter.append('text', text);
-        return await this.send('POST', 'chatBot/executeMessage/');
+        return await this.send('POST', '/api/chat/');
     },
     async sendPDF(file) {
         var parameter = new FormData();
@@ -33,7 +33,7 @@ Server.prototype = {
         return new Promise(function (resolve, reject) {
             let xhr = new XMLHttpRequest();  
             xhr.open(method, url, true);
-            xhr.setRequestHeader('x-csrf-token', csrftoken);    
+            // xhr.setRequestHeader('x-csrf-token', csrftoken);    
             xhr.setRequestHeader("Content-type", "application/json");
             xhr.onload = function () {
                 if (this.status >= 200 && this.status < 300) {
@@ -51,7 +51,7 @@ Server.prototype = {
                     statusText: xhr.statusText
                 });
             };
-            xhr.send({'teste':'teste'});
+            xhr.send(JSON.stringify({'teste':'teste'}));
         });
     },
 }

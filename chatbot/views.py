@@ -7,7 +7,6 @@ from rest_framework.response import Response
 def index(request):
     return render(request, 'chatbot/index.html')
 
-#@api_view(['POST'])
 @csrf_exempt
 def executeMessage(request):
     if request.method == 'POST':

@@ -22,19 +22,19 @@ from django.urls import path, include
 from rest_framework import routers
 from chatbot.api import viewsets as message_viewsets
 
-route = routers.DefaultRouter()
-route.register(
-    'message',
-    message_viewsets.MessageViewSet,
-    basename='message'
+# route = routers.DefaultRouter()
+# route.register(
+#     'message',
+#     message_viewsets.MessageViewSet,
+#     basename='message'
     
-)
+# )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('chatbot.urls')),
     path('exportar/', include('exportar.urls')),
-    path('api/', include(route.urls)),
+    # path('api/', include(route.urls)),
     path('api-auth/', include('rest_framework.urls')),
 ]
 

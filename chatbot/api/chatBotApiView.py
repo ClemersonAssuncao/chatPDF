@@ -2,18 +2,22 @@ from rest_framework.views import APIView
 from .serializers import MessageSerializer
 from rest_framework.response import Response
 from chatbot import models
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.permissions import AllowAny
 from rest_framework import status
 
 class chatBotApiView(APIView):
-    
-    def get(self, request, format=None):
-        drinks = models.Message.objects.all()
-        serializer = MessageSerializer(drinks, many=True)
+
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        books = models.Message.objects.all()
+        serializer = MessageSerializer(books, many=True)
         return Response(serializer.data)
     
-    def post(self, request, format=None):
-        print('asd')
-        serializer = MessageSerializer(data=request.data)
+    @csrf_exempt
+    def post(self, request):
+        serializer = models.Message(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
