@@ -1,5 +1,5 @@
-<!DOCTYPE html>
 {% load static %}
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Minha Página Inicial</title>
@@ -22,12 +22,13 @@
 					<a class="nav-link" href="{% url 'index' %}">Chatbot</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="{% url 'exportar' %}">Mandar PDF</a>
+					<a class="nav-link" href="{% url 'exportar' %}">Enviar PDF</a>
 				</li>
 			</ul>
 		</div>
 	</nav>
     {% block content %}
+
     {% endblock %}
 </body>
 <script src="{% static 'chatPDF/js/chatbot.js' %}"></script>
