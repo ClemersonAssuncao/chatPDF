@@ -7,8 +7,7 @@ from django.core.validators import FileExtensionValidator
 #         fields = '__all__'
 
 class PostForm(forms.Form):
-    pdf = forms.FileField(
-        label='Arquivo: ',
+    pdf = forms.FileField()
+        # label='Arquivo: ',
         # widget=forms.ClearableFileInput(attrs={'accept': 'application/pdf'})
         # validators=[FileExtensionValidator(allowed_extensions=['pdf'])]
-        )
