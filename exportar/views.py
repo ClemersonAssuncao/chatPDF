@@ -1,40 +1,32 @@
 from django.shortcuts import render
 from .forms import PostForm
 from django.views import View
-import os
+import PyPDF2
 
-# Create your views here.
 
 class IndexView(View):
     form_class = PostForm
     template_name = 'exportar/index.html'
 
     def get(self, request):
-        pass
+        form = self.form_class
+        context = {'form': form}
+        return render(request, self.template_name, context)
 
-
-        # if request.method == 'POST':
-        #     form = self.form_class(request.POST, request.FILES)
-        #     if form.is_valid():
-        #         print('tá válido')
-        #         uploaded_file = request.FILES['pdf']
-        #         file_path = os.path.join(settings.MEDIA_ROOT, uploaded_file.name)
-        #         with open(file_path, 'wb+') as destination:
-        #             for chunk in uploaded_file.chunks():
-        #                 destination.write(chunk)
-        #         return render(request, self.template_name, {'form': form})
-        # else:
-        #     return render(request, self.template_name)
-
-
-
-# def file_upload(request):
-#     form = PostForm()
-#     if request.method == 'POST':
-#         form = PostForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('index')
-        
-#     context = {'form': form}
-#     return render(request, 'exportar', context)
+    def post(self, request):
+        if request.method == 'POST':
+            form = self.form_class(request.POST, request.FILES)
+            if form.is_valid():
+                pdf_file = request.FILES['pdf_file']
+                print(pdf_file.name)
+                pdf_reader = PyPDF2.PdfReader(pdf_file)
+                number_pages = len(pdf_reader.pages)
+                page = pdf_reader.pages[0]
+                text = page.extract_text()
+                print(text)
+                print(f'Número de páginas: {number_pages}')
+            else:
+                form = self.form_class(request.POST, request.FILES)
+                print(form.errors)
+                print('aqui')
+            return render(request, self.template_name, {'form': form})
