@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .forms import PostForm
 from django.views import View
+import os
 
 # Create your views here.
 
@@ -10,6 +11,7 @@ class IndexView(View):
 
     def get(self, request):
         pass
+
 
         # if request.method == 'POST':
         #     form = self.form_class(request.POST, request.FILES)
@@ -25,13 +27,6 @@ class IndexView(View):
         #     return render(request, self.template_name)
 
 
-
-
-
-# def index(request):
-#     form = PostForm()
-#     context = {'form': form}
-#     return render(request, 'exportar/index.html', context)
 
 # def file_upload(request):
 #     form = PostForm()
