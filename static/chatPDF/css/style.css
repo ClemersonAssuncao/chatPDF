@@ -7,8 +7,8 @@
   }
   
   .chat-history {
-    max-height: 400px;
-    overflow-y: scroll;
+    height: calc(100% - 60px);
+    overflow-y: auto;
   }
   
   .chat-message {
@@ -60,10 +60,14 @@
     background-color: #3e8e41;
   }
 
-  .container{
+  /* .container{
     height: calc(100vh - 50px);
-  }
+  } */
 
   html,body{
     height: 100%;
+  }
+
+  .chat-container{
+    height: calc(100vh - 85px);
   }

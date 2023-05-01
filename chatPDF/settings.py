@@ -129,6 +129,14 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# Configurações do CSRF
+CSRF_COOKIE_SECURE = True
+
+# Configurações do cookie da sessão
+SESSION_COOKIE_SECURE = True
+
+OPEN_AI_API_KEY = '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'
+
 MEDIA_URL = '/media/'
 
 # Default primary key field type

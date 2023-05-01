@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% csrf_token %}
+<p id = "csrf">{% csrf_token %}</p>
   <div class="container">
-    <div class="chat-container">
+    <div class="chat-container border">
       <div class="chat-history">
-        <div class="chat-message bot">
+        <!-- <div class="chat-message bot">
           <div class="message-text">
             Olá! Eu sou o Chatbot, em que posso ajudá-lo?
           </div>
@@ -19,11 +19,11 @@
           <div class="message-text">
             Claro! Nosso produto é ...
           </div>
-        </div>
+        </div> -->
         <!-- Outras mensagens do chat -->
       </div>
       <div class="chat-input">
-        <input type="text" id="inputText" placeholder="Digite sua mensagem aqui">
+        <input type="text" id="inputText" placeholder="Digite sua duvida aqui">
         <button id="sendMessage">Enviar</button>
       </div>
     </div>
