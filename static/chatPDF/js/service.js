@@ -5,36 +5,31 @@ function Server() {
 Server.prototype = {
 
     async sendMessage(text) {
-        var parameter = new FormData();
+        const parameter = new FormData();
         parameter.append('text', text);
-        return await this.send('POST', 'chatBot/executeMessage/');
+        return await this.send('POST', '/api/chat/', parameter);
     },
     async sendPDF(file) {
         var parameter = new FormData();
         parameter.append('files', file);
         return await this.send('POST', 'message');
     },
-    getCookie(name) {
-        let cookieValue = null;
-        if (document.cookie && document.cookie !== "") {
-          const cookies = document.cookie.split(";");
-          for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) === (name + "=")) {
-              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-              break;
-            }
-          }
+    getCrtfToken() {
+        return document.getElementsByName('csrfmiddlewaretoken')[0].value;
+    },
+    generateTempToken() {
+        let token = '';
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        for (let i = 0; i < 32; i++) {
+          token += characters.charAt(Math.floor(Math.random() * characters.length));
         }
-        return cookieValue;
+        return token;
     },
     send(method, url, parameter){
-        const csrftoken = this.getCookie('csrftoken');
-        return new Promise(function (resolve, reject) {
+        return new Promise((resolve, reject) => {
             let xhr = new XMLHttpRequest();  
-            xhr.open(method, url, true);
-            xhr.setRequestHeader('x-csrf-token', csrftoken);    
-            xhr.setRequestHeader("Content-type", "application/json");
+            xhr.open(method, url);
+            xhr.setRequestHeader('X-CSRFToken', this.getCrtfToken());  
             xhr.onload = function () {
                 if (this.status >= 200 && this.status < 300) {
                     resolve(xhr.response);
@@ -51,7 +46,7 @@ Server.prototype = {
                     statusText: xhr.statusText
                 });
             };
-            xhr.send({'teste':'teste'});
+            xhr.send(parameter);
         });
     },
 }
