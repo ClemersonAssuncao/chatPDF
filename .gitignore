@@ -181,4 +181,7 @@ chatbot/**/*.pyc
 exportar/**/__pycache__/*
 exportar/**/*.pyc
 
+# Ignorar banco de dados local
+/db.sqlite3
+
 # End of https://www.toptal.com/developers/gitignore/api/python
