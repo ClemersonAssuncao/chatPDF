@@ -173,4 +173,12 @@ poetry.toml
 # LSP config files
 pyrightconfig.json
 
+# Ignorar arquivos de cache do chatbot
+chatbot/**/__pycache__/*
+chatbot/**/*.pyc
+
+# Ignorar arquivos de cache do exportar
+exportar/**/__pycache__/*
+exportar/**/*.pyc
+
 # End of https://www.toptal.com/developers/gitignore/api/python
