@@ -32,8 +32,8 @@ from chatbot.api import viewsets as message_viewsets
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('chatbot.urls')),
     path('exportar/', include('exportar.urls')),
+    path('', include('chatbot.urls')),
     # path('api/', include(route.urls)),
     path('api-auth/', include('rest_framework.urls')),
 ]

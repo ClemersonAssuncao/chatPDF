@@ -11,6 +11,11 @@ ChatBot.prototype = {
             console.log(botText)
         });
     },
+    sendFiles(files){
+        this.service.sendFiles(files).then( (data) => {
+            console.log(data)
+        });
+    },
     addHistory(text, user){
         if (this.historyElement){
             // create the chatMessage to control the user class
@@ -26,7 +31,10 @@ ChatBot.prototype = {
         }
     }
 }
-
+document.querySelector('#enviar-arquivo').addEventListener('click', () => {
+    const files = document.getElementById('input-arquivos').files;
+    this.chatbot.sendFiles(files);
+})
 
 chatbot = new ChatBot(document.querySelector('.chat-history'));
 document.querySelector('#sendMessage').addEventListener('click', () => {

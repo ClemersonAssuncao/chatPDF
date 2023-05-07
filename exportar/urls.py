@@ -1,6 +1,7 @@
 from django.urls import path
+from .api.exportarApiView import exportarApiView
 from . import views
 
 urlpatterns = [
-    path('', views.IndexView.as_view(), name='exportar'),
+    path('api/enviar-arquivo/', exportarApiView.as_view(), name='enviar-arquivo')
 ]
