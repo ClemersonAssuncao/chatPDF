@@ -1,10 +1,44 @@
 {% extends "base.html" %}
 
 {% block content %}
-<p id = "csrf">{% csrf_token %}</p>
-  <div class="container">
+{% csrf_token %}
+  <div class="d-flex flex-row h-100">
+    <div class="d-flex flex-column p-1 mx-1" style="min-width: 300px;">
+      <div class="input-group py-1">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">
+            <span class="material-icons"> search </span>
+          </span>
+        </div>
+        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Pesquise o arquivo">
+      </div>
+      <div class="d-flex justify-content-center">
+        <button class='m-1 border text-nowrap rounded btn btn-light' data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <span class="material-icons"> add </span>
+          <span class="align-top"> Enviar Arquivo </span>
+        </button>
+      </div>
+      <div class="border overflow-auto h-100">
+        teste
+      </div>
+    </div>
+    <div class="border w-100">asd</div>
+    <!-- <div class="border">
+      <div>
+        <button class='m-1 border text-nowrap rounded btn btn-secondary'>
+          <span class="material-icons"> add </span>
+          <span class="align-top"> Enviar Arquivo </span>
+        </button>
+      </div>
+      <div class="h-100 border"></div>
+    </div>
+    <div class="border w-100">
+      
+    </div> -->
+  </div>
+  <!-- <div class="container">
     <div class="chat-container border">
-      <div class="chat-history">
+      <div class="chat-history"> -->
         <!-- <div class="chat-message bot">
           <div class="message-text">
             Olá! Eu sou o Chatbot, em que posso ajudá-lo?
@@ -21,11 +55,30 @@
           </div>
         </div> -->
         <!-- Outras mensagens do chat -->
-      </div>
+      <!-- </div>
       <div class="chat-input">
         <input type="text" id="inputText" placeholder="Digite sua duvida aqui">
         <button id="sendMessage">Enviar</button>
+      </div> -->
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Enviar arquivo</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="input-arquivos">
+                <label class="custom-file-label" for="input-arquivos">Escolher Arquivo</label>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary " id="enviar-arquivo">Enviar</button>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 {% endblock %}

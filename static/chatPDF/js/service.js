@@ -9,10 +9,12 @@ Server.prototype = {
         parameter.append('text', text);
         return await this.send('POST', '/api/chat/', parameter);
     },
-    async sendPDF(file) {
+    async sendFiles(files) {
         var parameter = new FormData();
-        parameter.append('files', file);
-        return await this.send('POST', 'message');
+        for (const file of files) {
+            parameter.append(`files`, file);
+        }
+        return await this.send('POST', '/exportar/api/enviar-arquivo/',parameter);
     },
     getCrtfToken() {
         return document.getElementsByName('csrfmiddlewaretoken')[0].value;
