@@ -135,7 +135,8 @@ CSRF_COOKIE_SECURE = True
 # Configurações do cookie da sessão
 SESSION_COOKIE_SECURE = True
 
-OPEN_AI_API_KEY = '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'
+
+OPEN_AI_API_KEY = '{INSERT HERE THE TOKEN}'
 
 MEDIA_URL = '/media/'
 
